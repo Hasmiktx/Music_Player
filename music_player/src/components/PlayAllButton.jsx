@@ -2,7 +2,13 @@
 
 const PlayAllButton = () => {
   return (
-    <div>PlayAllButton</div>
+    <button className="submit_btn" 
+        onClick={()=>{console.log("Play All")
+             }
+           }
+           >
+      PlayAll
+     </button>
   )
 }
 

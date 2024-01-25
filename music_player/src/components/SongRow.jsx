@@ -9,49 +9,24 @@ const SongRow = ({current,handlePlayPause}) => {
     
      const currentIsPlaying = useSelector(selectIsPlaying);
      const currentSong=useSelector(selectCurrentSong);
-     const isCurrentTheSame=current.id===currentSong.id
-    
-     
-    // const playTime=()=>{
-    //   const duration = songRef.current.duration;
-    //   const currTime=songRef.current.currentTime;
-    //   // console.log(currTime,"curr",duration,"dur")
-    //    const progress= currTime/duration *100
-    //   dispatch(setTime(progress))
-    // }
-    
-     
-
-    
-     
-    // useEffect(() => {
-    //    if(isPlaying){
-    //     songRef.current.play();
-    //     dispatch(setCurrentSong(current))
-    //   //   dispatch(setAudioRef(songRef.current))
-    //     console.log(isPlaying,"inUseEff",currentIsPlaying,"currIs")
-
-    //    } else {
-    //     songRef.current.pause();
-    //     // songRef.current.currentTime=0;
-    //    }
-    // }, [isPlaying])
-
-    
+     const isCurrentTheSame=current.id===currentSong.id;
 
   return (
-    <div className='song_wrapper'>
-       
-        <div onClick={()=>handlePlayPause(currentSong,currentIsPlaying,current)}>
-          {isCurrentTheSame&&currentIsPlaying?<BsFillPauseCircleFill/>:<BsFillPlayCircleFill/>}
+     <div className='song_wrapper'>
+         <div className='song_title'>
+              <div onClick={()=>handlePlayPause(currentSong,currentIsPlaying,current)}>
+                  {   isCurrentTheSame&&currentIsPlaying?
+                    <BsFillPauseCircleFill className="btn"/> :
+                    <BsFillPlayCircleFill className="btn"/>
+                  }
+             </div>
+              <img src={current.preview} alt="" className='song_img'/>
+              <div className='song_name_div'>
+                    <h3>{current.title}</h3>
+                    <p>{current.artists}</p>
+             </div>
         </div>
-     <img src={current.preview} alt="" className='song_img'/>
-     <div className='song_name_div'>
-        <p >{current.title}</p>
-        <p>{current.artists}</p>
-     </div>
-     
-     <p>{secondsToMM(current.duration)}</p>
+         <p>{secondsToMM(current.duration)}</p>
     </div>
   )
 }

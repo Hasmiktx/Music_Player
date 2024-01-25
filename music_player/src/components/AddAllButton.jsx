@@ -1,12 +1,17 @@
 
 import musicData from "../assets/data"
+
+
+
+
 const AddAllButton = ({setData}) => {
 
     const addAllSongs=()=>{
-        setData(musicData)
-    }
+        setData(musicData);
+        console.log("Add All Songs ")
+       }
   return (
-    <button onClick={addAllSongs}>AddAllSongs</button>
+       <button onClick={addAllSongs} className="submit_btn">AddAllSongs</button>
   )
 }
 

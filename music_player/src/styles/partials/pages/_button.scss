@@ -1,9 +1,17 @@
 .btn{
     width: 30px;
     height: 30px;
-    color: $black-color;
+    color: $primary-color;
+
+
     &:hover{
         color:$secondary-color;
 
     }
+}
+
+
+
+.submit_btn{
+    @extend %mixBtn
 }

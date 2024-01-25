@@ -4,11 +4,17 @@
   gap: 24px;
   flex: 1;
   margin: 10px 0;
-  max-height: calc(100vh - 195px);
+  max-height: 70vh;
   overflow: auto;
   padding: 15px;
   border: 1px solid #eee;
   border-radius: 20px;
+}
+
+.search_bar {
+  padding: 6px;
+  font-size: 17px;
+  border: none;
 }
 
 .song_list_container {
@@ -19,7 +25,7 @@
   width: 100vw;
   background-color: #EDEDED;
   position: fixed;
-  height: 10vh;
+  min-height: 10vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -33,19 +39,29 @@
 
 .song_wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  min-width: 30vw;
+  width: 40vw;
   height: 8rem;
 }
 .song_wrapper p {
   letter-spacing: 1px;
   color: #312f2f;
-  font-size: 20px;
+  font-size: 1rem;
+}
+.song_wrapper:hover {
+  border: 2px solid #ff8700;
+  border-radius: 20px;
+}
+
+.song_title {
+  display: flex;
+  align-items: center;
 }
 
 .song_name_div {
   width: 15rem;
+  margin: 0 5px;
 }
 
 * {
@@ -60,27 +76,26 @@ body {
 
 .player {
   position: fixed;
-  display: flex;
-  align-items: center;
   width: 100vw;
-  height: 80px;
+  min-height: 120px;
   left: 0;
   bottom: 0;
-  padding: 0 20px;
+  padding: 20px;
   gap: 30px;
 }
 
 .timer_div {
-  min-width: 100px;
-  background-color: rgba(119, 119, 119, 0.781);
-  height: 20px;
+  width: 100vw;
+  background-color: rgb(144, 144, 144);
+  height: 10px;
   border-radius: 30px;
   cursor: pointer;
 }
 
 .slider {
   height: 100%;
-  background-color: rgb(213, 214, 213);
+  width: 0;
+  background-color: #042cb1;
   border-radius: 30px;
 }
 
@@ -90,22 +105,39 @@ body {
   justify-content: space-around;
 }
 
-.search_wrapper {
+.player_atributes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search_wrapper, .upload_div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.next_preview {
+.player, .next_preview {
   display: flex;
   flex-direction: column;
+}
+
+.submit_btn {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px 20px;
+  margin: 3px;
+  background-color: #042cb1;
+  color: #EDEDED;
+}
+.submit_btn:hover {
+  transform: scale(0.98);
 }
 
 .btn {
   width: 30px;
   height: 30px;
-  color: rgb(19, 5, 28);
+  color: #042cb1;
 }
 .btn:hover {
-  color: #186ae5;
+  color: #ff8700;
 }/*# sourceMappingURL=style.css.map */

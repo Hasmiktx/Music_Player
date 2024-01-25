@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import  ExampleLoading from "./Loading";
+ 
 const MusicUploadForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -13,10 +14,10 @@ const MusicUploadForm = () => {
   const handleUploadClick = () => {
     if (selectedFile) {
       console.log(`Uploading file: ${selectedFile.name}`);
-      console.log(selectedFile,"file")
+      
       setUploading(true);
 
-      // Simulate network latency with a timeout
+      // Simulate network latency 
       setTimeout(() => {
         console.log(`Upload complete: ${selectedFile.name}`);
         setUploading(false);
@@ -25,12 +26,13 @@ const MusicUploadForm = () => {
   };
 
   return (
-    <div>
+    <div className="upload_div">
       <input type="file" accept=".mp3, .wav" onChange={handleFileChange} />
       <p>{selectedFile ? `Selected file: ${selectedFile.name}` : 'No file selected'}</p>
-      <button onClick={handleUploadClick} disabled={!selectedFile || uploading}>
-        {uploading ? 'Uploading...' : 'Upload'}
+       <button onClick={handleUploadClick} disabled={!selectedFile || uploading}>
+        {uploading ? "Uploading..." : 'Upload'}
       </button>
+      {uploading&&<ExampleLoading type={"spinningBubbles"} color={"#002395"}/> }
     </div>
   );
 };
