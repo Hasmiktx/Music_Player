@@ -18,9 +18,15 @@ function App() {
   const audio =new Audio();
 
 
+     // receive  from the state  currentSong and currIsPlaying,
+     // and current- current element from the list,wich will be clicked 
+     //the same function  receive  SongRow and Player components
 
+     
   const handlePlayPause=(currentSong,currIsPlaying,current)=>{
        if (currentSong.id !== current.id) {
+             //main logic - give the src audio object,
+             //and set currentSong and isPlaying to the gloabl state
              dispatch(setCurrentSong(current))
               dispatch(setCurrentIsPlaying(true))
               audio.src = current.src;
@@ -29,6 +35,7 @@ function App() {
  
               return;
      }
+             //  play/pause
      if (currIsPlaying) {
           audio.pause();
            dispatch(setCurrentIsPlaying(false))

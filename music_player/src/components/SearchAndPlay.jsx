@@ -4,8 +4,8 @@ import PlayAllButton from "./PlayAllButton"
 import musicData from "../assets/data";
 
 
-
-const searhFunc=(txt)=>{
+//  logic for searching  by song name or artist name
+const searchFunc=(txt)=>{
 
         const searchTxt=txt.toLowerCase();
    return     musicData.filter((song)=>
@@ -18,7 +18,7 @@ const SearchAndPlay = ({setData}) => {
      
            const handleChange=(e)=>{
 
-            setData(searhFunc(e.target.value));
+            setData(searchFunc(e.target.value));
          
              }
   return (

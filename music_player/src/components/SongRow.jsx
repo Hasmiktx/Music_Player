@@ -9,6 +9,11 @@ const SongRow = ({current,handlePlayPause}) => {
     
      const currentIsPlaying = useSelector(selectIsPlaying);
      const currentSong=useSelector(selectCurrentSong);
+
+
+     // checked if clicked element and state current element the same,
+     // returns true(for logic play/pause button)
+     
      const isCurrentTheSame=current.id===currentSong.id;
 
   return (

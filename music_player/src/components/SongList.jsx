@@ -1,6 +1,8 @@
 
 import SongRow from "./SongRow"
+  //reacieve data and display with SongRow components
 
+  
 const SongList = ({data,handlePlayPause}) => {
 
 
