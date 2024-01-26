@@ -14,7 +14,7 @@ const Player = ({ handlePlayPause,audio}) => {
   const currentIsPlaying=useSelector(selectIsPlaying);
  
   
-   //gived callback to the useState,wich set audio current time  to the local state every 1 seconds
+   //gived callback to the useEffect,wich set audio current time  to the local state every 1 seconds
   // current time/song duration value for slider width
   useEffect(() => {
        const timeInterval = setInterval(() => {
