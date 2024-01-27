@@ -3,7 +3,7 @@ import { selectCurrentSong, selectIsPlaying} from "../features/currentSong/curre
 import {BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill, 
    BsFillSkipEndCircleFill} from 'react-icons/bs';
 import secondsToMM from "../utils/secondsToMM";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 
@@ -12,7 +12,7 @@ const Player = ({ handlePlayPause,audio}) => {
   const[currTime,setCurrTime]=useState(0);
   const currentSong=useSelector(selectCurrentSong);
   const currentIsPlaying=useSelector(selectIsPlaying);
- 
+   const sliderRef=useRef();
   
    //gived callback to the useEffect,wich set audio current time  to the local state every 1 seconds
   // current time/song duration value for slider width
@@ -25,13 +25,17 @@ const Player = ({ handlePlayPause,audio}) => {
       clearInterval(timeInterval);
     };
    }, []);
-
-
+     
+       //change current song time by click
+    const handleSliderClick=(e)=>{
+       audio.currentTime=e.nativeEvent.offsetX/sliderRef.current.offsetWidth *currentSong.duration
+    }
 
 
   return (
     < div className="player">
-          <div className="timer_div" >
+          <div className="timer_div" ref={sliderRef}
+           onClick={(e)=>handleSliderClick(e)}> 
                 <div className="slider"
                   style={{width:`${currTime/currentSong.duration *100}%`}}>  
                </div> 
