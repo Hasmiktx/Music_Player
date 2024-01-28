@@ -47,12 +47,16 @@ function App() {
  
   return (
     <>
-      <div className='App'>
+      <div className='container'>
            <SearchAndPlay data={data} setData={setData}/>
+           <div className='songList_wrapper'>
            <SongList data={data} setData={setData} handlePlayPause={handlePlayPause}/>
+           <img src="music.jpg" className='main_img'/>
+           </div>
+           {/* <SongList data={data} setData={setData} handlePlayPause={handlePlayPause}/> */}
       </div>
        <MusicUploadForm/>
-       <Player  handlePlayPause={handlePlayPause} audio={audio}/>
+       <Player  handlePlayPause={handlePlayPause} audio={audio} data={data}/>
     </>
   )
 }

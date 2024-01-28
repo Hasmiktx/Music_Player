@@ -1,15 +1,8 @@
-.App{
+.container{
     
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    flex: 1;
-    margin: 10px 0;
-    max-height: 70vh;
-    overflow: auto;
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 20px;
+    
    
 
     
@@ -22,11 +15,27 @@
   border: none;
 }
 
+.songList_wrapper{
+  display: flex;
+  
+  margin-top: 15vh;
+  max-height: 60vh;
+  padding: 1rem 0;
+  // border: 1px solid black;
+  
 
+
+}
 
 .song_list_container{
-  margin-top: 20vh;
   
+   display: flex;
+   flex-direction: column;
+   flex: 1;
+   gap: 24px;
+   overflow: auto;
+   border-radius: 20px;
+  //  padding: 0 1rem;
   
 }
 
@@ -40,30 +49,36 @@
     width: 100vw;
     background-color: $light-color;
     position: fixed;
-    min-height: 10vh;
-    position: fixed;
+    height: 10vh;
+    
     top:0;
     left: 0;
 }
 
 
 
-
+.main_img{
+  width: 40vw;
+  max-height: 60vh;
+  margin:0 1rem;
+  border-radius: 1rem;
+}
 
 .song_img{
     width: 55px;
     height: 55px;
     border-radius: 10px;
+    margin-left: 5px;
 }
 
 
 .song_wrapper  {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   width: 40vw;
-  height: 8rem;
+  padding: 1rem;
     
     
     p {

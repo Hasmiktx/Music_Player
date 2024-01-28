@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux"
-import { selectCurrentSong, selectIsPlaying} from "../features/currentSong/currentSongSlice"
+import { selectCurrentSong, selectIsPlaying, setCurrentIsPlaying, setCurrentSong} from "../features/currentSong/currentSongSlice"
 import {BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill, 
    BsFillSkipEndCircleFill} from 'react-icons/bs';
 import secondsToMM from "../utils/secondsToMM";
 import { useEffect, useRef, useState } from "react";
 
+ 
 
 
-
-const Player = ({ handlePlayPause,audio}) => {
+const Player = ({ handlePlayPause,audio,data}) => {
   const[currTime,setCurrTime]=useState(0);
   const currentSong=useSelector(selectCurrentSong);
   const currentIsPlaying=useSelector(selectIsPlaying);
@@ -24,7 +24,7 @@ const Player = ({ handlePlayPause,audio}) => {
     return () => {
       clearInterval(timeInterval);
     };
-   }, []);
+   }, []);   //data
      
        //change current song time by click
     const handleSliderClick=(e)=>{
@@ -35,6 +35,32 @@ const Player = ({ handlePlayPause,audio}) => {
     }
 
 
+    //prev song by changing data index
+   const prevSong=()=>{
+   let idx= data.findIndex((el)=>el.id===currentSong.id);
+      if(idx){
+         idx--
+     }else{
+        idx=data.length-1
+   }
+    handlePlayPause(currentSong,currentIsPlaying,data[idx])
+   }
+
+
+
+     //  next    song by changing data index
+
+     const nextSong=()=>{
+      let idx= data.findIndex((el)=>el.id===currentSong.id);
+      if(idx===data.length-1){
+        idx=0
+      }else{
+        idx++
+      }
+      handlePlayPause(currentSong,currentIsPlaying,data[idx])
+
+     }
+     
   return (
     < div className="player">
           <div className="timer_div" ref={sliderRef}
@@ -48,7 +74,7 @@ const Player = ({ handlePlayPause,audio}) => {
 
                  <div className="player_atributes">     
                        <BsFillSkipStartCircleFill className="btn"
-                         onClick={()=>console.log("previous song")}
+                         onClick={prevSong}
                          />
                        <div onClick={()=>handlePlayPause(currentSong,currentIsPlaying,currentSong)}>
                        {
@@ -58,7 +84,7 @@ const Player = ({ handlePlayPause,audio}) => {
                         }
                        </div>
                        <BsFillSkipEndCircleFill className="btn"
-                       onClick={()=>console.log("next song")}
+                       onClick={nextSong}
                        />
                  </div>
                    <img className="song_img"src={currentSong.preview} alt="" />
