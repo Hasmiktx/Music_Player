@@ -28,7 +28,10 @@ const Player = ({ handlePlayPause,audio}) => {
      
        //change current song time by click
     const handleSliderClick=(e)=>{
-       audio.currentTime=e.nativeEvent.offsetX/sliderRef.current.offsetWidth *currentSong.duration
+
+       const choosenTime=e.nativeEvent.offsetX/sliderRef.current.offsetWidth *currentSong.duration
+        setCurrTime(choosenTime);
+        audio.currentTime=choosenTime;
     }
 
 
